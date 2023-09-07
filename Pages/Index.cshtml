@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="reveal">
+    <h1 class="display-4">Joystick til Windows markør</h1>
+    <p>Hold markøren over cirklerne for at se information om opsætningen.</p>
+</div>
+
+<div class="reveal image-container">
+    <img src="/img1.jpg" style="width: 800px; height: auto;" />
+    <div class="point" data-content="content1" style="top: 10%; left: 20%;"></div>
+    <div class="point" data-content="content2" style="top: 80%; left: 30%;"></div>
+
+    <div class="content" id="content1" style="top: -1.9%; left: -0.75%;">
+        <img src="/gnd.png" style="width: 800px; height: auto;"/>
+    </div>
+    <div class="content" id="content2" style="top: -1.9%; left: -0.75%;">
+        <img src="/connection.png" style="width: 800px; height: auto;"/>
+    </div>
+</div>
+
+<div class="reveal">
+    <p style="margin-top: 30px">Data om joystick position bliver overført til COM porten for indlæsning i en script som skal gemme dataen til en fil som den her hjemmeside indhenter dataen fra.</p>
+    <pre>
+        <code>
+ if (xValue > 500 && xValue < 510) { Serial.print(512); } else { Serial.print(xValue); } // Stick drift prevention
+     Serial.print(",");
+     if (yValue > 490 && yValue < 500) { Serial.print(512); } else { Serial.print(yValue); } // Stick drift prevention
+     Serial.print(",");
+     Serial.println(buttonState);
+        </code>
+    </pre>
+    <p style="margin-top: 30px">Data som blev indlæst fra joystick til <code>output.txt</code> kommer frem her.</p>
+
+    <pre>
+    <code id="text-content">
+
+        </code>
+    </pre>
+</div>
+
+
+<footer>
+    <p>Hjemmeside lavet af Emre</p>
+</footer>
